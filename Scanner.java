@@ -85,11 +85,19 @@ class Scanner {
                 // Number literals
                 if (isDigit(c)) {
                     number();
+                } else if (isAlpha(c)) {
+                    identifier();
                 } else {
                     MyLang.error(line, "Unexpected character.");
                 }
             }
         }
+    }
+
+    private void identifier() {
+        while (isAlphaNumeric(peek())) advance();
+
+        addToken(TokenType.IDENTIFIER);
     }
 
     /*
@@ -195,5 +203,13 @@ class Scanner {
         addToken(TokenType.NUMBER,
             Double.valueOf(source.substring(start, current)));
     }
-    // PAGE 52
+
+    private boolean isAlpha(char c) {
+        Character.toLowerCase(c);
+        return (c >= 'a' && c <= 'z') || c == '_';
+    }
+
+    private boolean isAlphaNumeric(char c) {
+        return isAlpha(c) || isDigit(c);
+    }
 }
