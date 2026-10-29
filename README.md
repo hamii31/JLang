@@ -14,6 +14,7 @@ JLang is a personal project implementing a language interpreter from scratch, wr
 | `Scanner.java` | Lexical scanner that reads source code and produces tokens. |
 | `Token.java` | Represents an individual token (lexeme, type, literal, line). |
 | `TokenType.java` | Enum defining the supported token types. |
+| `GeneerateAST.java` | Abstract Syntax Tree Generator. |
 
 ## Getting Started
 
@@ -30,7 +31,11 @@ javac *.java
 
 # Run the interpreter
 ```
-java MyLang [script]
+java MyLang <script>
+```
+# Generate an Abstract Syntax Tree (AST)
+```
+java GenerateAST <outputFolder path>
 ```
 
 Author
